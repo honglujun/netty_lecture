@@ -8,10 +8,29 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+/**
+ * 指定所用的仓库的路径，mavenCentral() 表示使用中央仓库，此刻表示在中央仓库里下载jar包到本地的指定目录
+ *
+ * mavenLocal()
+ * mavenCentral()
+ * 以上配置表示先从本地仓库下载，若没有，再到中央仓库下载
+ *
+ * mavenCentral()
+ * 如果只配置中央仓库，表示直接从中央仓库下载jar包，
+ * 但是如果指定下载的位置已经有了，就不会再次下载
+ */
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
+/**
+ * gradle工程的所有的jar包的坐标都是在dependencies属性内放置
+ * 每个jar包的坐标都有三个基本元素组成
+ * group，name，version
+ * testCompile表示该jar包在测试的时候起作用，该属性为jar包的作用域
+ * 我们在gradle里面添加坐标的时候要带上jar包的作用域
+ */
 dependencies {
     compile (
             "io.netty:netty-all:4.1.10.Final"
